@@ -39,7 +39,7 @@ class GameContainer extends Component {
         else if (prevState.player === "naughts") {
           newPlayer = "crosses"
         }
-        const newWinner = this.checkWinner();
+        const newWinner = this.checkWinner()+" wins";
         return {squareStates: newState, player: newPlayer, winner: newWinner}
       }
     )
@@ -48,34 +48,31 @@ class GameContainer extends Component {
   checkWinner(){
     const currentGrid = this.state.squareStates;
     //ROWS
-    if (currentGrid[1] === currentGrid[2] && currentGrid[2] === currentGrid[3]) {
+    if (currentGrid[0] === currentGrid[1] && currentGrid[1] === currentGrid[2]) {
       return currentGrid[1]
     }
-    else if (currentGrid[4] === currentGrid[5] && currentGrid[5] === currentGrid[6]) {
+    else if (currentGrid[3] === currentGrid[4] && currentGrid[4] === currentGrid[5]) {
       return currentGrid[4]
     }
-    else if (currentGrid[7] === currentGrid[8] && currentGrid[8] === currentGrid[9]) {
+    else if (currentGrid[6] === currentGrid[7] && currentGrid[7] === currentGrid[8]) {
       return currentGrid[7]
     }
     //COLUMNS
+    else if (currentGrid[0] === currentGrid[3] && currentGrid[3] === currentGrid[6]) {
+      return currentGrid[0]
+    }
     else if (currentGrid[1] === currentGrid[4] && currentGrid[4] === currentGrid[7]) {
       return currentGrid[1]
     }
     else if (currentGrid[2] === currentGrid[5] && currentGrid[5] === currentGrid[8]) {
       return currentGrid[2]
     }
-    else if (currentGrid[3] === currentGrid[6] && currentGrid[6] === currentGrid[9]) {
-      return currentGrid[3]
-    }
     //DIAGONALS
-    else if (currentGrid[1] === currentGrid[5] && currentGrid[5] === currentGrid[9]) {
-      return currentGrid[1]
+    else if (currentGrid[0] === currentGrid[4] && currentGrid[4] === currentGrid[8]) {
+      return currentGrid[0]
     }
-    else if (currentGrid[3] === currentGrid[5] && currentGrid[5] === currentGrid[7]) {
-      return currentGrid[7]
-    }
-    else {
-      return "Keep Playing!"
+    else if (currentGrid[2] === currentGrid[4] && currentGrid[4] === currentGrid[6]) {
+      return currentGrid[2]
     }
   }
 

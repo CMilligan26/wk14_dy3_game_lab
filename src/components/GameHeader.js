@@ -2,7 +2,7 @@ import React from 'react';
 
 const GameHeader = (props) => {
   return (
-    <h1>{props.winner}</h1>
+    <h1 className="Winner-Text" >{props.winner}</h1>
   )
 }
 

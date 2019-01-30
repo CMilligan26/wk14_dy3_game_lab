@@ -20,7 +20,7 @@ class GridSquare extends Component {
       event.target.className = "Naught"
     }
     this.setState({value: newValue})
-    const gridSquareInfo = {square: this.index, value: this.state.value}
+    const gridSquareInfo = {square: this.index, value: newValue}
     this.props.handleGridSquareChange(gridSquareInfo);
   }
 
