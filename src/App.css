@@ -23,40 +23,34 @@
 }
 
 .Grid-Container{
-  height: 462px;
-  width: 462px;
-  display: flex;
+  height: 450px;
+  width: 450px;
+  display: inline-flex;
   flex-wrap: wrap;
 }
 
 .Grid-Square{
   height: 150px;
   width: 150px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
   background-color: grey;
   margin: 0px;
+  padding: 0px;
 }
 
 .Cross{
-  background-color: blue;
   height: 150px;
   width: 150px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
   margin: 0px;
+  background-image: url('./images/cross.png');
+  background-size: cover;
 }
 
 .Naught{
-  background-color: red;
   height: 150px;
   width: 150px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
   margin: 0px;
+  background-image: url('./images/naught.png');
+    background-size: cover;
 }
 
 .Winner-Text{
