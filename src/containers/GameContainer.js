@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GridContainer from '../components/GridContainer';
 import GameHeader from '../components/GameHeader';
+import GameRestartButton from '../components/GameRestartButton';
 
 class GameContainer extends Component {
   constructor(props) {
@@ -104,9 +105,9 @@ class GameContainer extends Component {
       <div className="App">
       <GameHeader winner={this.state.winner}/>
       <br></br>
-      <GridContainer handleGridSquareClicked={this.handleGridSquareClicked} squareStates={this.state.squareStates} player={this.state.player}/>
+      <GridContainer handleGridSquareClicked={this.handleGridSquareClicked} squareStates={this.state.squareStates} player={this.state.player} winner={this.state.winner}/>
       <br></br>
-      <button onClick={this.resetGame}>Restart</button>
+      <GameRestartButton winner={this.state.winner} resetGame={this.resetGame}/>
       </div>
     );
   }

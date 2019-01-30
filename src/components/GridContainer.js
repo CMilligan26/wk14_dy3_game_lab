@@ -10,7 +10,8 @@ const GridContainer = (props) => {
     value={item}
     className={checkDisplay(item)}
     handleGridSquareChange={handleGridSquareChange}
-    player={props.player}>
+    player={props.player}
+    winner={props.winner}>
     </GridSquare>
   }
 )
