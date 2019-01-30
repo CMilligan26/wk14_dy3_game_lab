@@ -1,8 +1,8 @@
 import React from 'react';
 
-const GameHeader = () => {
+const GameHeader = (props) => {
   return (
-    <h1>Naughts and Crosses</h1>
+    <h1>{props.winner}</h1>
   )
 }
 

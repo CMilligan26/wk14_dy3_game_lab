@@ -1,36 +1,28 @@
-import React , { Component } from 'react';
+import React from 'react';
 import GridSquare from './GridSquare.js'
 
-class GridContainer extends Component {
+const GridContainer = (props) => {
 
-  constructor(props){
-    super(props);
-    this.state = {gridSquares: []}
-    this.handleGridSquareChange = this.handleGridSquareChange.bind(this);
-  };
-
-  handleGridSquareChange(gridSquareState){
-    this.props.handleGridSquareClicked(gridSquareState);
-  }
-
-  render(){
-    this.state.gridSquares = this.props.squareStates.map((item, index) => {
+  const newGridSquares = props.squareStates.map((item, index) => {
     return <GridSquare
     key={index}
     square={index}
     value={item}
-    handleGridSquareChange={this.handleGridSquareChange}
-    player={this.props.player}>
+    handleGridSquareChange={handleGridSquareChange}
+    player={props.player}>
     </GridSquare>
   }
-  )
+)
+
+function handleGridSquareChange(gridSquareState){
+  props.handleGridSquareClicked(gridSquareState);
+}
 
   return(
     <div className="Grid-Container">
-    { this.state.gridSquares }
+    { newGridSquares }
     </div>
   )
-}
 }
 
 export default GridContainer;
