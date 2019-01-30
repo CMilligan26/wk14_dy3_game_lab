@@ -7,6 +7,7 @@ class GameContainer extends Component {
     super(props);
     this.state = {
       squareStates: [
+        "0",
         "1",
         "2",
         "3",
@@ -14,8 +15,7 @@ class GameContainer extends Component {
         "5",
         "6",
         "7",
-        "8",
-        "9"
+        "8"
       ],
       player: "crosses",
       winner: "Start Game"
@@ -23,6 +23,7 @@ class GameContainer extends Component {
 
   this.handleGridSquareClicked = this.handleGridSquareClicked.bind(this);
   this.checkWinner = this.checkWinner.bind(this);
+  this.resetGame = this.resetGame.bind(this);
   }
 
   handleGridSquareClicked(gridSquareState){
@@ -74,9 +75,28 @@ class GameContainer extends Component {
     else if (currentGrid[2] === currentGrid[4] && currentGrid[4] === currentGrid[6]) {
       return currentGrid[2] + " wins!"
     }
+    else if (currentGrid.filter(item=>item === "crosses" || item === "naughts").length === 9) {
+      return "Tie!"
+    }
     else {
       return "Naughts and Crosses"
     }
+  }
+
+  resetGame(){
+    this.setState({squareStates: [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    player: "crosses",
+    winner: "Start Game"})
   }
 
   render(){
@@ -85,6 +105,8 @@ class GameContainer extends Component {
       <GameHeader winner={this.state.winner}/>
       <br></br>
       <GridContainer handleGridSquareClicked={this.handleGridSquareClicked} squareStates={this.state.squareStates} player={this.state.player}/>
+      <br></br>
+      <button onClick={this.resetGame}>Restart</button>
       </div>
     );
   }

@@ -8,11 +8,24 @@ const GridContainer = (props) => {
     key={index}
     square={index}
     value={item}
+    className={checkDisplay(item)}
     handleGridSquareChange={handleGridSquareChange}
     player={props.player}>
     </GridSquare>
   }
 )
+
+function checkDisplay(item){
+  if(item === "crosses"){
+     return "Cross"
+  }
+  else if (item === "naughts"){
+    return "Naught"
+  }
+  else {
+    return "Grid-Square"
+  }
+}
 
 function handleGridSquareChange(gridSquareState){
   props.handleGridSquareClicked(gridSquareState);
