@@ -10,19 +10,27 @@ class GridContainer extends Component {
   };
 
   handleGridSquareChange(gridSquareState){
+    this.props.handleGridSquareClicked(gridSquareState);
   }
 
   render(){
-    for (var i = 0; i < 9; i++) {
-      this.state.gridSquares.push(<GridSquare key={i} square={i}
-        handleGridSquareChange={this.handleGridSquareChange} player={this.props.player}></GridSquare>)
-    }
-    return(
-      <div className="Grid-Container">
-      { this.state.gridSquares }
-      </div>
-    )
+    this.state.gridSquares = this.props.squareStates.map((item, index) => {
+    return <GridSquare
+    key={index}
+    square={index}
+    value={item}
+    handleGridSquareChange={this.handleGridSquareChange}
+    player={this.props.player}>
+    </GridSquare>
   }
+  )
+
+  return(
+    <div className="Grid-Container">
+    { this.state.gridSquares }
+    </div>
+  )
+}
 }
 
 export default GridContainer;

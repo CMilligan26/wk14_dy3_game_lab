@@ -19,13 +19,35 @@ class GameContainer extends Component {
       ],
       player: "crosses"
     };
+
+  this.handleGridSquareClicked = this.handleGridSquareClicked.bind(this);
+  }
+
+  handleGridSquareClicked(gridSquareState){
+    const {square, value} = gridSquareState;
+    this.setState(
+      prevState =>
+      {
+        let newState = prevState.squareStates;
+        newState[square] = value;
+        let newPlayer = "";
+        if(prevState.player === "crosses") {
+          newPlayer = "naughts"
+        }
+        else if (prevState.player === "naughts") {
+          newPlayer = "crosses"
+        }
+        return {squareStates: newState, player: newPlayer}
+      }
+    )
+    console.log(this.state.squareStates);
   }
 
   render(){
     return(
       <div className="App">
       <GameHeader />
-      <GridContainer squareStates={this.state.squareStates} player={this.state.player}/>
+      <GridContainer handleGridSquareClicked={this.handleGridSquareClicked} squareStates={this.state.squareStates} player={this.state.player}/>
       </div>
     );
   }
