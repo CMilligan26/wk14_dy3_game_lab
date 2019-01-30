@@ -10,10 +10,10 @@ class GameContainer extends Component {
 
   render(){
     return(
-      <>
+      <div className="App">
       <GameHeader />
       <GridContainer />
-      </>
+      </div>
     );
   }
 }
