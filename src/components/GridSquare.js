@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const GridSquare = ({square, handleGridSquareChange}) => {
 
-function handleChange(event){
-  console.log(event.target);
-  console.log(event.target.square);
-  const gridSquareInfo = {square: event.target.square, string: event.target.value}
-  console.log(gridSquareInfo);
-  handleGridSquareChange(gridSquareInfo)
-}
+class GridSquare extends Component {
+  constructor(props){
+    super(props);
+    this.index = props.square;
+    this.state = {
+      value: ""
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-return(
-  <option square={square} className="Grid-Square" onClick={handleChange} value="test">
-  </option>
-)
+  handleChange(event){
+    this.setState({value: this.props.player})
+    const gridSquareInfo = {square: this.index, value: this.state.value}
+    console.log(gridSquareInfo);
+
+  }
+
+  render(){
+    return(
+      <>
+        <button className="Grid-Square" onClick={this.handleChange}>
+        </button>
+      </>
+    )
+  }
+
+
 };
 
+
 export default GridSquare;
+
+// TODO: make this into a class, state=index,

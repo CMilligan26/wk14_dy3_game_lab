@@ -5,14 +5,27 @@ import GameHeader from '../components/GameHeader';
 class GameContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      squareStates: [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      player: "crosses"
+    };
   }
 
   render(){
     return(
       <div className="App">
       <GameHeader />
-      <GridContainer />
+      <GridContainer squareStates={this.state.squareStates} player={this.state.player}/>
       </div>
     );
   }
